@@ -1,0 +1,248 @@
+# Dữ liệu thô từ scraper 
+data/raw/
+data/raw/*.jsonl
+data/raw/*.json
+data/raw/*.txt
+data/raw/*.csv
+
+# Dữ liệu đã xử lý (tensor, vocab)
+data/processed/
+data/processed/*.pt
+data/processed/*.pth
+data/processed/*.pkl
+data/processed/*.npy
+data/processed/*.npz
+data/processed/vocab.json
+
+# Model weights & checkpoints
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+saved_models/
+runs/
+
+# Checkpoint scraping (danh sách URL đã cào)
+1_scraping/checkpoints/
+1_scraping/checkpoints/*.json
+
+# Kết quả thực nghiệm lớn
+reports/results_*.json
+reports/figures/*.png
+reports/figures/*.jpg
+reports/figures/*.pdf
+
+# Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*
+
+# Pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Checkpoint tự động của Jupyter
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Output cells nặng (ảnh, plot) — giữ lại code, bỏ output
+# Uncomment dòng dưới nếu muốn bỏ hết output trong notebook
+# *.ipynb
+
+# Jupyter kernelspec tạm
+profile_default/
+ipython_config.py
+
+
+# TensorBoard logs
+logs/
+tb_logs/
+lightning_logs/
+tensorboard/
+events.out.tfevents.*
+
+# PyTorch Lightning
+*.ckpt
+
+# Wandb (Weights & Biases)
+wandb/
+.wandb/
+
+# Cache của Streamlit
+.streamlit/
+__streamlit_cache__/
+
+# KHÔNG BAO GIỜ push API key, password lên Git
+.env
+.env.*
+.env.local
+.env.production
+secrets.yaml
+secrets.json
+credentials.json
+*.key
+*.pem
+*.p12
+
+# VSCode
+.vscode/
+*.code-workspace
+.history/
+
+# PyCharm / JetBrains
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Vim / Neovim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Spyder
+.spyderproject.cfg
+.spyproject/
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.AppleDouble
+.LSOverride
+Icon
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Log files
+*.log
+*.log.*
+logs/
+log/
+
+# Temp files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+*.rej
+*.swp
+
+# File nén tạm
+*.zip
+*.tar.gz
+*.tar.bz2
+*.rar
+*.7z
+
+# Profile / benchmark
+*.prof
+*.lprof
+
+# Giữ lại cấu trúc thư mục data/ dù nội dung bị ignore
+!data/.gitkeep
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!checkpoints/.gitkeep
+!reports/figures/.gitkeep
+!1_scraping/checkpoints/.gitkeep
+
+# Giữ lại file results tổng hợp nhỏ (không phải log lớn)
+!reports/results.json
