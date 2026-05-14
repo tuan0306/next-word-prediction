@@ -1,12 +1,12 @@
 # Dữ liệu thô từ scraper 
-data/raw/
+data/raw/*
 data/raw/*.jsonl
 data/raw/*.json
 data/raw/*.txt
 data/raw/*.csv
 
 # Dữ liệu đã xử lý (tensor, vocab)
-data/processed/
+data/processed/*
 data/processed/*.pt
 data/processed/*.pth
 data/processed/*.pkl
@@ -15,7 +15,7 @@ data/processed/*.npz
 data/processed/vocab.json
 
 # Model weights & checkpoints
-checkpoints/
+checkpoints/*
 *.pt
 *.pth
 *.ckpt
@@ -24,8 +24,8 @@ saved_models/
 runs/
 
 # Checkpoint scraping (danh sách URL đã cào)
-1_scraping/checkpoints/
-1_scraping/checkpoints/*.json
+src/1_scraping/checkpoints/*
+src/1_scraping/checkpoints/*.json
 
 # Kết quả thực nghiệm lớn
 reports/results_*.json
@@ -242,7 +242,7 @@ log/
 !data/processed/.gitkeep
 !checkpoints/.gitkeep
 !reports/figures/.gitkeep
-!1_scraping/checkpoints/.gitkeep
+!src/1_scraping/checkpoints/.gitkeep
 
 # Giữ lại file results tổng hợp nhỏ (không phải log lớn)
 !reports/results.json
