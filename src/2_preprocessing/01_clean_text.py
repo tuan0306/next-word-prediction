@@ -25,7 +25,7 @@ def clean_text(text):
     text=re.sub(r'https?://\S+|www\.\S+',' ',text)
     
     # Xoa email
-    text=re.sub(r'\b[a-z0-9+-_%.]+@[a-z0-0.-]\.[a-z]{2,}\b',' ',text)
+    text=re.sub(r'\b[a-z0-9+-_%.]+@[a-z0-9.-]\.[a-z]{2,}\b',' ',text)
     
     # Xoa so dien thoai
     text=re.sub(r'\b(0|\+84)\d{9}\b',' ',text)
