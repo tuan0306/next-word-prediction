@@ -1,0 +1,4 @@
+# Vocab
+VOCAB:
+  VOCAB_SIZE: 30000
+  SPECIAL_TOKENS: ["<PAD>","<UNK>","<BOS>","<EOS>"]
