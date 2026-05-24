@@ -24,8 +24,8 @@ saved_models/
 runs/
 
 # Checkpoint scraping (danh sách URL đã cào)
-src/1_scraping/checkpoints/*
-src/1_scraping/checkpoints/*.json
+src/scraping/checkpoints/*
+src/scraping/checkpoints/*.json
 
 # Kết quả thực nghiệm lớn
 reports/results_*.json
