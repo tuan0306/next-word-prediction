@@ -3,54 +3,56 @@ import numpy as np
 import tensorflow as tf
 import yaml
 
-pad_sequences=tf.keras.preprocessing.sequences.pad_sequences
-
 def load_vocab(filepath):
     with open(filepath,'r',encoding="utf8") as f:
-        return json.load(f)
+        vocab_data = json.load(f)
+
+    return vocab_data["word2idx"]
     
 
     
 def sequence_generator(filepath,vocab,max_length):
     unk_id=vocab.get("<UNK>",1)
-        
-    with open(filepath,'r',encoding="utf8") as f:
-        for line in f:
-            if not line.strip():
-                continue
-            
-            line=line.strip()
-            
-            try:
-                doc=json.loads(line)
-                
-                content=doc.get("title","") + " " + doc.get("content","")
-                tokens=content.split()
-                
-                if len(tokens)<5:
+    
+    while True:
+        with open(filepath,'r',encoding="utf8") as f:
+            for line in f:
+                if not line.strip():
                     continue
                 
-                tokens=vocab.get("<BOS>",0)+tokens+vocab.get("<EOS>",3)
+                line=line.strip()
                 
-                token_list=[vocab.get(word,unk_id) for word in tokens]
-                
-                for i in range(1,len(token_list)):
-                    n_gram=token_list[:i+1]
+                try:
+                    doc=json.loads(line)
                     
-                    padded=pad_sequences(
-                        [n_gram],
-                        maxlen=max_length+1,
-                        padding='pre',
-                        truncating='pre'
-                    )[0]
+                    content=doc.get("content","")
+                    tokens=content.split()
                     
-                    X=padded[:-1]
-                    y=padded[-1]
+                    if len(tokens)<5:
+                        continue
                     
-                    yield X,y
+                    tokens=["<BOS>"]+tokens+["<EOS>"]
                     
-            except json.JSONDecodeError:
-                continue
+                    token_list=[vocab.get(word,unk_id) for word in tokens]
+                    
+                    for i in range(1,len(token_list),2):
+                        n_gram=token_list[:i+1]
+                        
+                        X=n_gram[:-1].copy()
+                        y=n_gram[-1]
+                        
+                        if len(X)>max_length:
+                            X=X[-max_length:]
+                        
+                        pad_length=max_length-len(X)
+                        
+                        if pad_length>0:
+                            X=X+[vocab.get("<PAD>",0)]*pad_length
+                        
+                        yield X,y
+                        
+                except json.JSONDecodeError:
+                    continue
             
 def build_streaming_dataset(filepath,vocab_path,batch_size=128,max_length=20,shuffle_buffer=10000, is_training=False):
     vocab=load_vocab(vocab_path)
