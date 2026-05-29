@@ -41,7 +41,6 @@ def main():
     parser.add_argument('--epochs',type=int,default=config["TRAINING"]["EPOCHS"])
     parser.add_argument('--lr',type=float,default=config["TRAINING"]["LEARNING_RATE"])
     parser.add_argument('--batch_size',type=int,default=config["TRAINING"]["BATCH_SIZE"])
-    parser.add_argument('--max_length',type=int,default=config["TRAINING"]["MAX_LENGTH"])
     args=parser.parse_args()
     
     vocab_path='data/processed/vocab.json'
@@ -52,11 +51,11 @@ def main():
     vocab_size=vocab["vocab_size"]
         
     train_ds=build_streaming_dataset('data/processed/train_data.jsonl',vocab_path,
-                                     batch_size=args.batch_size,max_length=args.max_length,
+                                     batch_size=args.batch_size,max_length=config["TRAINING"]["MAX_LENGTH"],
                                      is_training=True)
     
     val_ds=build_streaming_dataset('data/processed/val_data.jsonl',vocab_path,
-                                     batch_size=args.batch_size,max_length=args.max_length,
+                                     batch_size=args.batch_size,max_length=config["TRAINING"]["MAX_LENGTH"],
                                      is_training=False)
     
     model_params={

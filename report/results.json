@@ -1,0 +1,16 @@
+{
+    "rnn": {
+        "val_loss": 7.1567,
+        "perplexity": 1282.72,
+        "top_1_accuracy": 0.0753,
+        "top_3_accuracy": 0.1528,
+        "top_5_accuracy": 0.198
+    },
+    "lstm": {
+        "val_loss": 5.8185,
+        "perplexity": 336.45,
+        "top_1_accuracy": 0.1553,
+        "top_3_accuracy": 0.2635,
+        "top_5_accuracy": 0.3154
+    }
+}
